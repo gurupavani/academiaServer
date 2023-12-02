@@ -1,4 +1,4 @@
-package com.iiitbesd.academicerp.Models;
+package com.iiitbesd.academicerp.RequestEntities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

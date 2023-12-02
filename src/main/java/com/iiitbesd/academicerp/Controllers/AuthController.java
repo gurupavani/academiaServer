@@ -1,14 +1,14 @@
 package com.iiitbesd.academicerp.Controllers;
 
-import com.iiitbesd.academicerp.Models.UserCredentials;
+import com.iiitbesd.academicerp.RequestEntities.LogoutCred;
+import com.iiitbesd.academicerp.RequestEntities.UserCredentials;
 import com.iiitbesd.academicerp.ResponseEnities.LoginResponse;
+import com.iiitbesd.academicerp.ResponseEnities.LogoutResponse;
 import com.iiitbesd.academicerp.Services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -28,16 +28,11 @@ public class AuthController {
         LoginResponse res;
         res = new LoginResponse();
         try {
-//            if (userCreds.getUsername().equals("pavani") && userCreds.getPassword().equals("pavani1234")) {
-//                return "User Login successful";
-//            } else {
-//                return "Incorrect Username or Password";
-//            }
-            res=authService.authenticate(userCreds);
+            res = authService.authenticate(userCreds);
 
-            if(res.isStatus()){
-return ResponseEntity.status(HttpStatus.OK).body(res);
-            }else{
+            if (res.isStatus()) {
+                return ResponseEntity.status(HttpStatus.OK).body(res);
+            } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(res);
             }
 
@@ -50,12 +45,11 @@ return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
     @PostMapping("/logout")
-    public String logoutUser() {
-        try {
-            return "User Logged Out Successfully";
+    public ResponseEntity<LogoutResponse> logoutUser(@RequestBody LogoutCred lgCred) {
+        LogoutResponse res = new LogoutResponse();
+        res.setStatus(true);
+        res.setMsg("Logged out Successfully.");
 
-        } catch (Exception e) {
-            return "Error At backend";
-        }
+        return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 }

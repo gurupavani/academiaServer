@@ -1,8 +1,7 @@
 package com.iiitbesd.academicerp.Services;
 
 import com.iiitbesd.academicerp.Entities.Student;
-import com.iiitbesd.academicerp.Models.UserCredentials;
-import com.iiitbesd.academicerp.Repositories.BillsRepository;
+import com.iiitbesd.academicerp.RequestEntities.UserCredentials;
 import com.iiitbesd.academicerp.Repositories.StudentRepository;
 import com.iiitbesd.academicerp.ResponseEnities.LoginResponse;
 import com.iiitbesd.academicerp.ResponseEnities.StudentOverview;

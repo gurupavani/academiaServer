@@ -1,5 +1,7 @@
 package com.iiitbesd.academicerp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.Optional;
 
 @Entity
 @Table(name="Student_Payment")
@@ -22,6 +25,7 @@ public class StudentPayment {
 
     @ManyToOne
     @JoinColumn(name = "student_id")
+    @JsonBackReference
     private Student studentId;
 
     @Column(name="description")
@@ -35,5 +39,7 @@ public class StudentPayment {
 
     @ManyToOne
     @JoinColumn(name = "bill_id")
+    @JsonBackReference
     private Bill billId;
+
 }

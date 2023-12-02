@@ -1,4 +1,4 @@
-package com.iiitbesd.academicerp.Models;
+package com.iiitbesd.academicerp.RequestEntities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class StudentResponseBill {
-    private int studentId;
+public class BillPayment {
     private int billId;
-    private String description;
+    private int studentId;
     private float amount;
-    private String billDate;
-    private String deadline;
+    private String description;
 }

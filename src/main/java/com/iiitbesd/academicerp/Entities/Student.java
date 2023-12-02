@@ -1,10 +1,14 @@
 package com.iiitbesd.academicerp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name="Students")
@@ -44,4 +48,12 @@ public class Student {
 
     @Column(name="graduation_year")
     private int gradYear;
+
+    @OneToMany(mappedBy = "studentId" ,cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Collection<StudentBill> studentBills;
+
+    @OneToMany(mappedBy = "studentId")
+    @JsonManagedReference
+    private Collection<StudentPayment> studentPayments;
 }

@@ -1,5 +1,7 @@
 package com.iiitbesd.academicerp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,9 +22,11 @@ public class StudentBill {
 
     @ManyToOne
     @JoinColumn(name = "student_id")
+    @JsonBackReference
     private Student studentId;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "bill_id")
+    @JsonBackReference
     private Bill billId;
 }
